@@ -48,14 +48,10 @@
     return self;
 }
 - (void)addViews {
-    _nameLabel = [[UILabel alloc] init];
-    _phoneLabel = [[UILabel alloc] init];
-    _addressLabel = [[UILabel alloc] init];
-    _detailedAddressLabel = [[UILabel alloc] init];
-    _nameLabel.text = @"姓名";
-    _phoneLabel.text = @"电话";
-    _addressLabel.text = @"地址";
-    _detailedAddressLabel.text = @"详细地址";
+    _nameLabel = [YHViewsMaker makeLabelWithFontSie:14 textColor:nil name:@"姓名" labelTextAlignment:labelTextAlignmentRight];
+    _phoneLabel = [YHViewsMaker makeLabelWithFontSie:14 textColor:nil name:@"电话" labelTextAlignment:labelTextAlignmentRight];
+    _addressLabel = [YHViewsMaker makeLabelWithFontSie:14 textColor:nil name:@"地址" labelTextAlignment:labelTextAlignmentRight];
+    _detailedAddressLabel = [YHViewsMaker makeLabelWithFontSie:14 textColor:nil name:@"详细地址" labelTextAlignment:labelTextAlignmentRight];
     [self.contentView addSubview:_nameLabel];
     [self.contentView addSubview:_phoneLabel];
     [self.contentView addSubview:_addressLabel];
@@ -91,7 +87,7 @@
     UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
     [topView setBarStyle:UIBarStyleDefault];
     UIBarButtonItem * btnSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    UIBarButtonItem * doneButton1 = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(dismissKeyBoard)];
+    UIBarButtonItem * doneButton1 = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:nil];
     NSArray * buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton1, nil];
     [topView setItems:buttonsArray];
     [_detailedAddressTextField setInputAccessoryView:topView];
@@ -103,7 +99,6 @@
     [_consignorButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.contentView addSubview:_consignorButton];
     _consignorButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    
 }
 - (void)layoutViews {
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {

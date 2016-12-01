@@ -11,23 +11,15 @@
 #import "TableViewCell1.h"
 #import "ViewController11.h"
 #import "TableViewCell2.h"
+#import "TableViewCell3.h"
 
 @interface cccTableViewController ()
 
 @end
 
 @implementation cccTableViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIEdgeInsets inset = UIEdgeInsetsZero;
-    for (UIView *subview in self.tableView.subviews) {
-        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewWrapperView"]) {
-            subview.frame = CGRectMake(0, 0, self.tableView.bounds.size.width, self.tableView.bounds.size.height);
-            UIEdgeInsets inset = UIEdgeInsetsZero;
-        }
-    }
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -53,12 +45,14 @@
             return ;
         }
         TableViewCell2 *cell2 = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-        NSArray *array = @[name, phone, address, detailedAddress, cell2.remarksArr];
+        TableViewCell3 *cell3 = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+        NSArray *array = @[name, phone, address, detailedAddress, cell2.remarksArr,cell3.receiveGoodsOption, cell3.postGoodsOption];
         
         ViewController11 *vc = [[ViewController11 alloc] init];
         vc.dataArr = array;
 //        [strongSelf.navigationController pushViewController:vc animated:YES];
     };
+//    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 - (BOOL)strIsEmpty:(NSString *)str promptName:(NSString *)name {
     if (str.length == 0) {
@@ -87,7 +81,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -100,10 +94,19 @@
             cell = [[TableViewCell1 alloc] init];
         }
         return cell;
-    } else {
+    } else if(indexPath.section == 1) {
         TableViewCell2 *cell = [[TableViewCell2 alloc] init];
         return cell;
+    } else {
+        TableViewCell3 *cell = [[TableViewCell3 alloc] init];
+        return cell;
     }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 5;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 5;
 }
 
 @end

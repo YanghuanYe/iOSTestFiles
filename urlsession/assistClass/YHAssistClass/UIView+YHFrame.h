@@ -2,7 +2,7 @@
 //  UIView+YHFrame.h
 //  urlsession
 //
-//  Created by apple on 2016/11/30.
+//  Created by yeyanghuan on 2016/11/30.
 //  Copyright © 2016年 YYH. All rights reserved.
 //
 
@@ -16,7 +16,7 @@
 @property CGFloat xmg_y;
 @property CGFloat xmg_centerX;
 @property CGFloat xmg_centerY;
-+(instancetype)viewWithHexColor:(NSString *)hexString;
+//+(instancetype)viewWithHexColor:(NSString *)hexString;
 
 + (instancetype)xmg_viewFromXib;
 

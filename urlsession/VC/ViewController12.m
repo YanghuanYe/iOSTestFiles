@@ -43,6 +43,8 @@ block();\
     nextBtn.frame = CGRectMake(0, self.view.bounds.size.height -44, self.view.bounds.size.width, 44);
     [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)nextBtnClick {
