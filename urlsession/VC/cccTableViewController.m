@@ -12,8 +12,12 @@
 #import "ViewController11.h"
 #import "TableViewCell2.h"
 #import "TableViewCell3.h"
+#import "FoldTableViewCell.h"
 
-@interface cccTableViewController ()
+@interface cccTableViewController ()<FoldTableViewCellFoldProtocol>
+
+@property (nonatomic, strong)NSMutableArray *cellPropertyArr;
+@property (nonatomic, assign)NSInteger cellType;
 
 @end
 
@@ -26,6 +30,10 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    _cellPropertyArr = [NSMutableArray array];
+    _cellType = FoldTableViewCellTypeFold;
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 300;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
@@ -81,7 +89,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -97,10 +105,23 @@
     } else if(indexPath.section == 1) {
         TableViewCell2 *cell = [[TableViewCell2 alloc] init];
         return cell;
-    } else {
+    } else if(indexPath.section == 2) {
         TableViewCell3 *cell = [[TableViewCell3 alloc] init];
         return cell;
+    } else if(indexPath.section == 3) {
+        FoldTableViewCell *cell = [[FoldTableViewCell alloc] init];
+        cell.delegate = self;
+        cell.indexPath = indexPath;
+        cell.type = _cellType;
+//        [cell update];
+        return cell;
     }
+    return nil;
+}
+- (void)foldCellWillBeUnfolded:(NSIndexPath *)indexPath {
+    _cellType = _cellType == FoldTableViewCellTypeFold ? FoldTableViewCellTypeUnfold : FoldTableViewCellTypeFold;
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.tableView reloadData];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 5;
