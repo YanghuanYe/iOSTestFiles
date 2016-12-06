@@ -11,32 +11,37 @@
 #import "TableViewCell1.h"
 #import "ViewController11.h"
 #import "TableViewCell2.h"
+#import "TableViewCell3.h"
+#import "FoldTableViewCell.h"
+#import <MJRefresh.h>
 
-@interface cccTableViewController ()
+@interface cccTableViewController ()<FoldTableViewCellFoldProtocol>
+
+@property (nonatomic, strong)NSMutableArray *cellPropertyArr;
+@property (nonatomic, assign)NSInteger cellType;
 
 @end
 
 @implementation cccTableViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIEdgeInsets inset = UIEdgeInsetsZero;
-    for (UIView *subview in self.tableView.subviews) {
-        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewWrapperView"]) {
-            subview.frame = CGRectMake(0, 0, self.tableView.bounds.size.width, self.tableView.bounds.size.height);
-            UIEdgeInsets inset = UIEdgeInsetsZero;
-        }
-    }
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    _cellPropertyArr = [NSMutableArray array];
+    _cellType = FoldTableViewCellTypeFold;
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 300;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        NSLog(@"jjj");
+//    }];
+//    [self.tableView.mj_header beginRefreshing];
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resign)]];
     self.view.backgroundColor = [UIColor lightGrayColor];
     
@@ -53,12 +58,14 @@
             return ;
         }
         TableViewCell2 *cell2 = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-        NSArray *array = @[name, phone, address, detailedAddress, cell2.remarksArr];
+        TableViewCell3 *cell3 = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+        NSArray *array = @[name, phone, address, detailedAddress, cell2.remarksArr,cell3.receiveGoodsOption, cell3.postGoodsOption];
         
         ViewController11 *vc = [[ViewController11 alloc] init];
         vc.dataArr = array;
 //        [strongSelf.navigationController pushViewController:vc animated:YES];
     };
+//    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 - (BOOL)strIsEmpty:(NSString *)str promptName:(NSString *)name {
     if (str.length == 0) {
@@ -87,7 +94,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -100,10 +107,32 @@
             cell = [[TableViewCell1 alloc] init];
         }
         return cell;
-    } else {
+    } else if(indexPath.section == 1) {
         TableViewCell2 *cell = [[TableViewCell2 alloc] init];
         return cell;
+    } else if(indexPath.section == 2) {
+        TableViewCell3 *cell = [[TableViewCell3 alloc] init];
+        return cell;
+    } else if(indexPath.section == 3) {
+        FoldTableViewCell *cell = [[FoldTableViewCell alloc] init];
+        cell.delegate = self;
+        cell.indexPath = indexPath;
+        cell.type = _cellType;
+//        [cell update];
+        return cell;
     }
+    return nil;
+}
+- (void)foldCellWillBeUnfolded:(NSIndexPath *)indexPath {
+    _cellType = _cellType == FoldTableViewCellTypeFold ? FoldTableViewCellTypeUnfold : FoldTableViewCellTypeFold;
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.tableView reloadData];
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 5;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 5;
 }
 
 @end

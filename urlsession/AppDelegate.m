@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController12.h"
+#import "ViewController.h"
 #import "ViewController11.h"
+#import "ViewController12.h"
+#import "MainPageViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    ViewController12 *vc = [[ViewController12 alloc] init];
+    MainPageViewController *vc = [[MainPageViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = nav;
