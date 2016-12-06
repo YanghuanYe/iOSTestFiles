@@ -22,10 +22,6 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self addViews];
-//        [self layoutViews];
-        if (self.type == FoldTableViewCellTypeFold) {
-            self.type = FoldTableViewCellTypeFold;
-        }
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
@@ -47,25 +43,27 @@
     [self.contentView updateConstraintsIfNeeded];
 }
 - (void)addViews {
-    _unfoldBtn = [YHViewsMaker makeButtonWithFontSie:14 titleColor:nil selectedColor:nil highlightedColor:[UIColor orangeColor] name:@"unfoldCell" imageName:nil selectedImageName:nil tag:0];
+    _unfoldBtn = [YHViewsMaker makeButtonWithFontSie:14 titleColor:nil selectedColor:nil highlightedColor:[UIColor orangeColor] name:@"button" imageName:nil selectedImageName:nil tag:0];
     [_unfoldBtn addTarget:self action:@selector(unfold) forControlEvents:UIControlEventTouchUpInside];
-    _showLabel = [YHViewsMaker makeLabelWithFontSie:14 textColor:nil name:@"unfold!" labelTextAlignment:0];
+    _showLabel = [YHViewsMaker makeLabelWithFontSie:14 textColor:nil name:@"label" labelTextAlignment:0];
     [YHViewsMaker addSubViews:@[_unfoldBtn, _showLabel] toSuperView:self.contentView];
 }
 - (void)layoutViews {
-//    [_unfoldBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.top.equalTo(self.contentView).offset(10);
-//        make.bottom.equalTo(self.contentView).offset(-10);
-//    }];
 }
 - (void)unfold {
     if (_delegate && [_delegate respondsToSelector:@selector(foldCellWillBeUnfolded:)]) {
         [_delegate foldCellWillBeUnfolded:self.indexPath];
     }
-    self.type = FoldTableViewCellTypeUnfold;
+}
+- (void)setButtonName:(NSString *)buttonName {
+    [_unfoldBtn setTitle:buttonName forState:UIControlStateNormal];
+}
+- (void)setLabelName:(NSString *)labelName {
+    _showLabel.text = labelName;
 }
 - (void)setType:(FoldTableViewCellType)type {
     _type = type;
+    __block MASConstraint *con1, *con2, *con3, *con4;
     if (type == FoldTableViewCellTypeFold) {
 //        [_unfoldBtn mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.left.top.equalTo(self.contentView).offset(10);
@@ -75,6 +73,11 @@
             make.left.top.equalTo(self.contentView).offset(10);
             make.bottom.equalTo(self.contentView).offset(-10);
         }];
+//        [con1 deactivate];
+//        [con2 deactivate];
+//        [con3 deactivate];
+//        [con4 deactivate];
+        self.contentView.backgroundColor = [UIColor lightGrayColor];
     }
     if (type == FoldTableViewCellTypeUnfold) {
 //        [_unfoldBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,11 +89,12 @@
             make.bottom.equalTo(_showLabel.mas_top).offset(-20);
         }];
         [_showLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_unfoldBtn.mas_bottom).offset(20).priority(MASLayoutPriorityDefaultMedium);
-            make.left.equalTo(self.contentView).offset(10);
-            make.bottom.equalTo(self.contentView).offset(-10).priority(MASLayoutPriorityDefaultMedium);
-            make.height.mas_equalTo(@30);
+            con1 = make.top.equalTo(_unfoldBtn.mas_bottom).offset(20);
+            con2 = make.left.equalTo(self.contentView).offset(10);
+            con3 = make.bottom.equalTo(self.contentView).offset(-10);
+            con4 = make.height.mas_equalTo(@30);
         }];
+        self.contentView.backgroundColor = [UIColor clearColor];
 //        [self.contentView setNeedsDisplay];
 //        [self.contentView layoutIfNeeded];
 //        [self.contentView updateConstraintsIfNeeded];

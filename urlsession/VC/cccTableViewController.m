@@ -13,6 +13,7 @@
 #import "TableViewCell2.h"
 #import "TableViewCell3.h"
 #import "FoldTableViewCell.h"
+#import <MJRefresh.h>
 
 @interface cccTableViewController ()<FoldTableViewCellFoldProtocol>
 
@@ -37,6 +38,10 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 300;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        NSLog(@"jjj");
+//    }];
+//    [self.tableView.mj_header beginRefreshing];
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resign)]];
     self.view.backgroundColor = [UIColor lightGrayColor];
     

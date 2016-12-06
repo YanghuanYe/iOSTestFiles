@@ -10,6 +10,7 @@
 #import "NSArray+Log.h"
 #import "TableViewCell1.h"
 #import "cccTableViewController.h"
+#import "FoldTableViewController.h"
 
 #define lalaLog(block) \
 if(block) {\
@@ -18,7 +19,8 @@ block();\
 
 @interface ViewController12 ()< UITextFieldDelegate>
 
-@property (nonatomic, strong)cccTableViewController *vc;
+//@property (nonatomic, strong)cccTableViewController *vc;
+@property (nonatomic, strong)FoldTableViewController *vc;
 
 @end
 
@@ -28,8 +30,9 @@ block();\
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.hidden = YES;
-    self.view.backgroundColor = [UIColor blueColor];
-    _vc = [[cccTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    self.view.backgroundColor = [UIColor orangeColor];
+//    _vc = [[cccTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    _vc = [[FoldTableViewController alloc] initWithStyle:UITableViewStylePlain];
     [self addChildViewController:_vc];
     _vc.view.frame = CGRectMake(0, 44, self.view.bounds.size.width, self.view.bounds.size.height -44 - 44);
     [self.view addSubview:_vc.view];
@@ -48,9 +51,9 @@ block();\
 }
 
 - (void)nextBtnClick {
-    if (_vc.newBlock) {
-        _vc.newBlock();
-    }
+//    if (_vc.newBlock) {
+//        _vc.newBlock();
+//    }
 }
 
 @end

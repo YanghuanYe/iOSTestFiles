@@ -7,6 +7,7 @@
 //
 
 #import "MainPageViewController.h"
+#import "ViewController12.h"
 
 @interface MainPageViewController ()
 
@@ -26,7 +27,8 @@
     [btn addTarget:self action:@selector(jumpToVC) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)jumpToVC {
-    
+    ViewController12 *vc = [[ViewController12 alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
