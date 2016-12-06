@@ -44,8 +44,10 @@
 }
 - (void)addViews {
     _unfoldBtn = [YHViewsMaker makeButtonWithFontSie:14 titleColor:nil selectedColor:nil highlightedColor:[UIColor orangeColor] name:@"button" imageName:nil selectedImageName:nil tag:0];
+    _unfoldBtn.backgroundColor = [UIColor blueColor];
     [_unfoldBtn addTarget:self action:@selector(unfold) forControlEvents:UIControlEventTouchUpInside];
     _showLabel = [YHViewsMaker makeLabelWithFontSie:14 textColor:nil name:@"label" labelTextAlignment:0];
+    _showLabel.backgroundColor = [UIColor yellowColor];
     [YHViewsMaker addSubViews:@[_unfoldBtn, _showLabel] toSuperView:self.contentView];
 }
 - (void)layoutViews {
