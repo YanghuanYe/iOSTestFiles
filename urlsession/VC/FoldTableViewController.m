@@ -28,21 +28,22 @@
     self.tableView.estimatedRowHeight = 200;
 //    [self.tableView registerClass:[FoldTableViewCell class] forCellReuseIdentifier:@"reuse"];
     _foldArr = [NSMutableArray array];
+    __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        [self.tableView.mj_footer resetNoMoreData];
-//        [self.tableView.mj_header beginRefreshing];
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+//        [strongSelf.tableView.mj_header beginRefreshing];
         _rowsIndex = 1;
-        [self refreshFoldArr];
-        [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
+        [strongSelf refreshFoldArr];
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView.mj_header endRefreshing];
     }];
-    self.tableView.mj_footer = [MJRefreshBackGifFooter footerWithRefreshingBlock:^{
-        [self.tableView.mj_footer beginRefreshing];
-        [self addMoreFoldArr];
-        [self.tableView reloadData];
-        [self.tableView.mj_footer endRefreshing];
+    self.tableView.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingBlock:^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.tableView.mj_footer beginRefreshing];
+        [strongSelf addMoreFoldArr];
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView.mj_footer endRefreshing];
     }];
-    
     [self.tableView.mj_header beginRefreshing];
 }
 - (void)refreshFoldArr {
