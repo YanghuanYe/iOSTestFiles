@@ -27,6 +27,4 @@ typedef NS_ENUM(NSUInteger, FoldTableViewCellType) {
 @property (nonatomic, strong)NSString *buttonName;
 @property (nonatomic, strong)NSString *labelName;
 
-- (void)update;
-
 @end

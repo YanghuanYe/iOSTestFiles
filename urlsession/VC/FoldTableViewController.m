@@ -20,13 +20,17 @@
 
 @implementation FoldTableViewController
 
+static NSString *reuseID = @"reuse";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     _rowsIndex = 0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 200;
-//    [self.tableView registerClass:[FoldTableViewCell class] forCellReuseIdentifier:@"reuse"];
+    
+    [self.tableView registerClass:[FoldTableViewCell class] forCellReuseIdentifier:reuseID];
+    
     _foldArr = [NSMutableArray array];
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -56,7 +60,8 @@
 - (void)addMoreFoldArr {
     _rowsIndex++;
     for (int i = (_rowsIndex-1)*10; i < _rowsIndex*10; i++) {
-        FoldModel *fm = [FoldModel newWithBtnName:[NSString stringWithFormat:@"button%@", @(i)] LaName:[NSString stringWithFormat:@"label%i", i] type:(i % 2 == 0 ? FoldTableViewCellTypeFold : FoldTableViewCellTypeUnfold)];
+        FoldModel *fm = [FoldModel newWithBtnName:[NSString stringWithFormat:@"button%@", @(i)] LaName:[NSString stringWithFormat:@"label%i", i] type:FoldTableViewCellTypeUnfold];
+        //(i % 2 == 0 ? FoldTableViewCellTypeFold : FoldTableViewCellTypeUnfold)
         [_foldArr addObject:fm];
     }
 }
@@ -69,35 +74,32 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return _rowsIndex * 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    FoldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuse"];
-//    if (!cell) {
-    
-//    }
-    FoldTableViewCell *cell = [[FoldTableViewCell alloc] init];
+    FoldTableViewCell *cell = (FoldTableViewCell *)[tableView dequeueReusableCellWithIdentifier:reuseID];
     FoldModel *model = [_foldArr objectAtIndex:indexPath.row];
     cell.buttonName = model.buttonName;
     cell.labelName = model.labelName;
-    cell.type = model.type;
     cell.delegate = self;
     cell.indexPath = indexPath;
-    
-    // Configure the cell...
+    cell.type = model.type;
     
     return cell;
 }
 - (void)foldCellWillBeUnfolded:(NSIndexPath *)indexPath {
     FoldModel *model = [_foldArr objectAtIndex:indexPath.row];
-    model.type = model.type == FoldTableViewCellTypeUnfold ? FoldTableViewCellTypeFold : FoldTableViewCellTypeUnfold;
+    model.type = ((model.type == FoldTableViewCellTypeUnfold) ? FoldTableViewCellTypeFold : FoldTableViewCellTypeUnfold);
+//    if (model.type == FoldTableViewCellTypeUnfold) {
+//        model.type = FoldTableViewCellTypeFold;
+//    } else {
+//        model.type = FoldTableViewCellTypeUnfold;
+//    }
 //    [_foldArr replaceObjectAtIndex:indexPath.row withObject:model];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
