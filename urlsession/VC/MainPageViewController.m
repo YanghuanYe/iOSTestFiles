@@ -19,6 +19,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithTitle:@"点击" style:UIBarButtonItemStyleDone target:self action:@selector(addSearchView)];
+    self.navigationItem.rightBarButtonItem = rItem;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.view addSubview:btn];
@@ -26,6 +29,10 @@
     [btn setTitle:@"nnnnnn" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(jumpToVC) forControlEvents:UIControlEventTouchUpInside];
 }
+- (void)addSearchView {
+    
+}
+
 - (void)jumpToVC {
     ViewController12 *vc = [[ViewController12 alloc] init];
     [self.navigationController pushViewController:vc animated:YES];

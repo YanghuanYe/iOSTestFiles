@@ -19,20 +19,13 @@
 
 @implementation FoldTableViewCell
 
-//- (instancetype)initWithFrame:(CGRect)frame {
-//    if (self = [super initWithFrame:frame]) {
-//        [self addViews];
-//        self.selectionStyle = UITableViewCellSelectionStyleNone;
-//    }
-//    return self;
-//}
-//- (instancetype)init {
-//    if (self = [super init]) {
-//        [self addViews];
-//        self.selectionStyle = UITableViewCellSelectionStyleNone;
-//    }
-//    return self;
-//}
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self addViews];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    return self;
+}
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self addViews];

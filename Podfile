@@ -4,6 +4,6 @@ target 'urlsession' do
 	pod 'Masonry'
 	pod 'AFNetworking'
 	pod 'WebViewJavascriptBridge'
-	pod 'MJExtension'
 	pod 'MJRefresh'
+	pod 'MJExtension'
 end

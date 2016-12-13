@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DF50EB33979036B2B83A4904'
+               BlueprintIdentifier = '75C6B3B0B59F12C627A4580E'
                BlueprintName = 'Pods-urlsession'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-urlsession.a'>

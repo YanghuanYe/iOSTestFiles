@@ -60,8 +60,7 @@ static NSString *reuseID = @"reuse";
 - (void)addMoreFoldArr {
     _rowsIndex++;
     for (int i = (_rowsIndex-1)*10; i < _rowsIndex*10; i++) {
-        FoldModel *fm = [FoldModel newWithBtnName:[NSString stringWithFormat:@"button%@", @(i)] LaName:[NSString stringWithFormat:@"label%i", i] type:FoldTableViewCellTypeUnfold];
-        //(i % 2 == 0 ? FoldTableViewCellTypeFold : FoldTableViewCellTypeUnfold)
+        FoldModel *fm = [FoldModel newWithBtnName:[NSString stringWithFormat:@"button%@", @(i)] LaName:[NSString stringWithFormat:@"label%i", i] type:(i % 2 == 0 ? FoldTableViewCellTypeFold : FoldTableViewCellTypeUnfold)];
         [_foldArr addObject:fm];
     }
 }
