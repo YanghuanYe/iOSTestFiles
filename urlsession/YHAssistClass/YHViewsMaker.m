@@ -8,16 +8,21 @@
 
 #import "YHViewsMaker.h"
 #import "UIView+YHFrame.h"
+#import "UIColor+ZSB.h"
 
 @implementation YHViewsMaker
 
-+ (UILabel *)makeLabelWithFontSie:(NSInteger)fontSize textColor:(UIColor *)color name:(NSString *)labelName labelTextAlignment:(labelTextAlignment)textAlign {
++ (UILabel *)makeLabelWithFontSie:(NSInteger)fontSize textColor:(id)color name:(NSString *)labelName labelTextAlignment:(labelTextAlignment)textAlign {
     UILabel *label = [[UILabel alloc] init];
     if (fontSize != 0) {
         label.font = [UIFont systemFontOfSize:fontSize];
     }
     if (color != nil) {
-        label.textColor = color;
+        if ([color isKindOfClass:[UIColor class]]) {
+            label.textColor = color;
+        } else if([color isKindOfClass:[NSString class]]) {
+            label.textColor = [self YHColorFromHex:color alpha:1.0];
+        }
     }
     label.text = labelName;
     if (textAlign == labelTextAlignmentLeft) {
@@ -29,7 +34,18 @@
     }
     return label;
 }
-+(UIButton *)makeButtonWithFontSie:(NSInteger)fontSize titleColor:(UIColor *)color selectedColor:(UIColor *)selectedColor highlightedColor:(UIColor *)highlightedColor name:(NSString *)btnName imageName:(NSString *)imgName selectedImageName:(NSString *)selectedImageName tag:(NSInteger)tag {
+/*
+    simple property button maker
+ */
+#pragma mark - simple property button maker
++ (UIButton *)makeButtonWithFontSie:(NSInteger)fontSize titleColor:(id)color selectedColor:(id)selectedColor name:(NSString *)btnName tag:(NSInteger)tag {
+    return [self makeButtonWithFontSie:fontSize titleColor:color selectedColor:selectedColor highlightedColor:nil name:btnName imageName:nil selectedImageName:nil tag:tag];
+
+}
+/*
+    complex property button maker
+ */
++(UIButton *)makeButtonWithFontSie:(NSInteger)fontSize titleColor:(id)color selectedColor:(id)selectedColor highlightedColor:(id)highlightedColor name:(NSString *)btnName imageName:(NSString *)imgName selectedImageName:(NSString *)selectedImageName tag:(NSInteger)tag {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     if (fontSize != 0) {
         btn.titleLabel.font = [UIFont systemFontOfSize:fontSize];
@@ -41,18 +57,30 @@
         [btn setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
     }
     if (color != nil) {
-        [btn setTitleColor:color forState:UIControlStateNormal];
+        if ([color isKindOfClass:[UIColor class]]) {
+            [btn setTitleColor:color forState:UIControlStateNormal];
+        } else if([color isKindOfClass:[NSString class]]) {
+            [btn setTitleColor:[self YHColorFromHex:color alpha:1.0] forState:UIControlStateNormal];
+        }
     } else {
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     if (selectedColor != nil) {
-        [btn setTitleColor:selectedColor forState:UIControlStateSelected];
+        if ([selectedColor isKindOfClass:[UIColor class]]) {
+            [btn setTitleColor:selectedColor forState:UIControlStateSelected];
+        } else if([selectedColor isKindOfClass:[NSString class]]) {
+            [btn setTitleColor:[self YHColorFromHex:selectedColor alpha:1.0] forState:UIControlStateSelected];
+        }
     }
     if (highlightedColor != nil) {
-        [btn setTitleColor:highlightedColor forState:UIControlStateHighlighted];
+        if ([highlightedColor isKindOfClass:[UIColor class]]) {
+            [btn setTitleColor:highlightedColor forState:UIControlStateHighlighted];
+        } else if([highlightedColor isKindOfClass:[NSString class]]) {
+            [btn setTitleColor:[self YHColorFromHex:highlightedColor alpha:1.0] forState:UIControlStateHighlighted];
+        }
     }
     if (selectedImageName != nil) {
-        [btn setImage:[UIImage imageNamed:selectedImageName] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:selectedImageName] forState:UIControlStateSelected];
     }
     if (tag != 0) {
         btn.tag = tag;
@@ -78,6 +106,34 @@
             subview.layer.cornerRadius = cornerRadius;
             subview.layer.masksToBounds = YES;
         }
+    }
+}
+
+#pragma mark - Color From NSString To UIColor
++ (UIColor*)YHColorFromHex:(NSString *)hexString alpha:(CGFloat)alpha{
+    unsigned int hexInt = 0;
+    // Create scanner
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    // Tell scanner to skip the # character
+    [scanner setCharactersToBeSkipped:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
+    // Scan hex value
+    [scanner scanHexInt:&hexInt];
+    
+    // Create color object, specifying alpha as well
+    UIColor *color =
+    [UIColor colorWithRed:((CGFloat) ((hexInt & 0xFF0000) >> 16))/255
+                    green:((CGFloat) ((hexInt & 0xFF00) >> 8))/255
+                     blue:((CGFloat) (hexInt & 0xFF))/255
+                    alpha:alpha > 1.0 ? 1.0 : alpha];
+    
+    return color;
+}
+
++ (NSString *)safeStringMethod:(NSString *)str {
+    if (str.length == 0) {
+        return @"暂无";
+    } else {
+        return str;
     }
 }
 

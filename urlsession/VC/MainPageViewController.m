@@ -8,6 +8,7 @@
 
 #import "MainPageViewController.h"
 #import "ViewController12.h"
+#import "PlanViewController.h"
 
 @interface MainPageViewController ()
 
@@ -34,7 +35,7 @@
 }
 
 - (void)jumpToVC {
-    ViewController12 *vc = [[ViewController12 alloc] init];
+    ViewController12 *vc = [[PlanViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
