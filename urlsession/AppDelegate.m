@@ -14,6 +14,7 @@
 #import "ContactsViewController.h"
 #import <Contacts/Contacts.h>
 #import "PhotoViewController.h"
+#import "LocationViewController.h"
 
 @interface AppDelegate ()
 
@@ -50,7 +51,8 @@
     
 //    MainPageViewController *vc = [[MainPageViewController alloc] init];
 //    ContactsViewController *vc = [ContactsViewController new];
-    PhotoViewController *vc = [PhotoViewController new];
+//    PhotoViewController *vc = [PhotoViewController new];
+    LocationViewController *vc = [LocationViewController new];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = nav;

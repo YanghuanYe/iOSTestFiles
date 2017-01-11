@@ -17,6 +17,8 @@
 		183101901E26024A00FCBD8E /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1831018F1E26024A00FCBD8E /* ContactsViewController.m */; };
 		183101931E260D6900FCBD8E /* ViewController11.m in Sources */ = {isa = PBXBuildFile; fileRef = 183101921E260D6900FCBD8E /* ViewController11.m */; };
 		183101961E260DD800FCBD8E /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183101951E260DD800FCBD8E /* PhotoViewController.m */; };
+		1831019C1E2631A600FCBD8E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1831019A1E262B6500FCBD8E /* CoreLocation.framework */; };
+		1831019F1E2632E800FCBD8E /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1831019E1E2632E800FCBD8E /* LocationViewController.m */; };
 		187D35E71E0D19FB00A58C58 /* 屏幕快照 2016-12-23 下午12.36.42.png in Resources */ = {isa = PBXBuildFile; fileRef = 187D35E61E0D19FB00A58C58 /* 屏幕快照 2016-12-23 下午12.36.42.png */; };
 		187D35E91E0EB3FD00A58C58 /* 屏幕快照 2016-12-24 下午9.47.03.png in Resources */ = {isa = PBXBuildFile; fileRef = 187D35E81E0EB3FD00A58C58 /* 屏幕快照 2016-12-24 下午9.47.03.png */; };
 		187D35EC1E10A50A00A58C58 /* PlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D35EB1E10A50A00A58C58 /* PlanViewController.m */; };
@@ -77,6 +79,9 @@
 		183101921E260D6900FCBD8E /* ViewController11.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController11.m; sourceTree = "<group>"; };
 		183101941E260DD800FCBD8E /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		183101951E260DD800FCBD8E /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		1831019A1E262B6500FCBD8E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1831019D1E2632E800FCBD8E /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		1831019E1E2632E800FCBD8E /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		187D35E51E0D08BB00A58C58 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		187D35E61E0D19FB00A58C58 /* 屏幕快照 2016-12-23 下午12.36.42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "屏幕快照 2016-12-23 下午12.36.42.png"; sourceTree = "<group>"; };
 		187D35E81E0EB3FD00A58C58 /* 屏幕快照 2016-12-24 下午9.47.03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "屏幕快照 2016-12-24 下午9.47.03.png"; sourceTree = "<group>"; };
@@ -136,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1831019C1E2631A600FCBD8E /* CoreLocation.framework in Frameworks */,
 				181CEEB51DE7E41200D48226 /* AddressBookUI.framework in Frameworks */,
 				C2FF9F6E2FC4BB6CC4F7CB69 /* libPods-urlsession.a in Frameworks */,
 			);
@@ -269,6 +275,8 @@
 				1831018F1E26024A00FCBD8E /* ContactsViewController.m */,
 				183101941E260DD800FCBD8E /* PhotoViewController.h */,
 				183101951E260DD800FCBD8E /* PhotoViewController.m */,
+				1831019D1E2632E800FCBD8E /* LocationViewController.h */,
+				1831019E1E2632E800FCBD8E /* LocationViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 		E8631AF5E6ED8A337279675D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1831019A1E262B6500FCBD8E /* CoreLocation.framework */,
 				181CEEB41DE7E41200D48226 /* AddressBookUI.framework */,
 				DDC6EE89924A9B1571F32E6C /* libPods-urlsession.a */,
 			);
@@ -475,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18305A561E1F95A300D48F0D /* YHViewsMaker.m in Sources */,
+				1831019F1E2632E800FCBD8E /* LocationViewController.m in Sources */,
 				18B1B8351DDD4A7B003227FA /* BlockPass.m in Sources */,
 				181CEECB1DEBD2C700D48226 /* AddressModel.m in Sources */,
 				18B1B80D1DD988D1003227FA /* AppDelegate.m in Sources */,
@@ -641,7 +651,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C762K875F3;
 				INFOPLIST_FILE = urlsession/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YYH.urlsession;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -656,7 +666,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C762K875F3;
 				INFOPLIST_FILE = urlsession/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YYH.urlsession;
 				PRODUCT_NAME = "$(TARGET_NAME)";
