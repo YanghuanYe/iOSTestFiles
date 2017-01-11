@@ -14,6 +14,9 @@
 		181CEECB1DEBD2C700D48226 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 181CEECA1DEBD2C700D48226 /* AddressModel.m */; };
 		18305A551E1F95A300D48F0D /* UIView+YHFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 18305A511E1F95A300D48F0D /* UIView+YHFrame.m */; };
 		18305A561E1F95A300D48F0D /* YHViewsMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18305A541E1F95A300D48F0D /* YHViewsMaker.m */; };
+		183101901E26024A00FCBD8E /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1831018F1E26024A00FCBD8E /* ContactsViewController.m */; };
+		183101931E260D6900FCBD8E /* ViewController11.m in Sources */ = {isa = PBXBuildFile; fileRef = 183101921E260D6900FCBD8E /* ViewController11.m */; };
+		183101961E260DD800FCBD8E /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183101951E260DD800FCBD8E /* PhotoViewController.m */; };
 		187D35E71E0D19FB00A58C58 /* 屏幕快照 2016-12-23 下午12.36.42.png in Resources */ = {isa = PBXBuildFile; fileRef = 187D35E61E0D19FB00A58C58 /* 屏幕快照 2016-12-23 下午12.36.42.png */; };
 		187D35E91E0EB3FD00A58C58 /* 屏幕快照 2016-12-24 下午9.47.03.png in Resources */ = {isa = PBXBuildFile; fileRef = 187D35E81E0EB3FD00A58C58 /* 屏幕快照 2016-12-24 下午9.47.03.png */; };
 		187D35EC1E10A50A00A58C58 /* PlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D35EB1E10A50A00A58C58 /* PlanViewController.m */; };
@@ -29,7 +32,6 @@
 		18D4399E1DEFCD8E009007F0 /* TableViewCell3.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D4399D1DEFCD8E009007F0 /* TableViewCell3.m */; };
 		18D439B21DEFF201009007F0 /* cccTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D439AB1DEFF201009007F0 /* cccTableViewController.m */; };
 		18D439B31DEFF201009007F0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D439AD1DEFF201009007F0 /* ViewController.m */; };
-		18D439B41DEFF201009007F0 /* ViewController11.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D439AF1DEFF201009007F0 /* ViewController11.m */; };
 		18D439B51DEFF201009007F0 /* ViewController12.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D439B11DEFF201009007F0 /* ViewController12.m */; };
 		18D439C41DF02F7A009007F0 /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D439B81DF02F7A009007F0 /* NSArray+Log.m */; };
 		18D439C51DF02F7A009007F0 /* ShareMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D439BA1DF02F7A009007F0 /* ShareMenuView.m */; };
@@ -67,6 +69,14 @@
 		18305A521E1F95A300D48F0D /* YHMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHMacro.h; sourceTree = "<group>"; };
 		18305A531E1F95A300D48F0D /* YHViewsMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHViewsMaker.h; sourceTree = "<group>"; };
 		18305A541E1F95A300D48F0D /* YHViewsMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHViewsMaker.m; sourceTree = "<group>"; };
+		1831018C1E25CEA200FCBD8E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		1831018D1E25CEA200FCBD8E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		1831018E1E26024A00FCBD8E /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		1831018F1E26024A00FCBD8E /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		183101911E260D6900FCBD8E /* ViewController11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController11.h; sourceTree = "<group>"; };
+		183101921E260D6900FCBD8E /* ViewController11.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController11.m; sourceTree = "<group>"; };
+		183101941E260DD800FCBD8E /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		183101951E260DD800FCBD8E /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		187D35E51E0D08BB00A58C58 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		187D35E61E0D19FB00A58C58 /* 屏幕快照 2016-12-23 下午12.36.42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "屏幕快照 2016-12-23 下午12.36.42.png"; sourceTree = "<group>"; };
 		187D35E81E0EB3FD00A58C58 /* 屏幕快照 2016-12-24 下午9.47.03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "屏幕快照 2016-12-24 下午9.47.03.png"; sourceTree = "<group>"; };
@@ -95,8 +105,6 @@
 		18D439AB1DEFF201009007F0 /* cccTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cccTableViewController.m; sourceTree = "<group>"; };
 		18D439AC1DEFF201009007F0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		18D439AD1DEFF201009007F0 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		18D439AE1DEFF201009007F0 /* ViewController11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController11.h; sourceTree = "<group>"; };
-		18D439AF1DEFF201009007F0 /* ViewController11.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController11.m; sourceTree = "<group>"; };
 		18D439B01DEFF201009007F0 /* ViewController12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController12.h; sourceTree = "<group>"; };
 		18D439B11DEFF201009007F0 /* ViewController12.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController12.m; sourceTree = "<group>"; };
 		18D439B71DF02F7A009007F0 /* NSArray+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Log.h"; sourceTree = "<group>"; };
@@ -249,14 +257,18 @@
 				18D439DB1DF54CE4009007F0 /* FoldTableViewController.m */,
 				18D439AC1DEFF201009007F0 /* ViewController.h */,
 				18D439AD1DEFF201009007F0 /* ViewController.m */,
-				18D439AE1DEFF201009007F0 /* ViewController11.h */,
-				18D439AF1DEFF201009007F0 /* ViewController11.m */,
+				183101911E260D6900FCBD8E /* ViewController11.h */,
+				183101921E260D6900FCBD8E /* ViewController11.m */,
 				18D439B01DEFF201009007F0 /* ViewController12.h */,
 				18D439B11DEFF201009007F0 /* ViewController12.m */,
 				18D439CA1DF05840009007F0 /* MainPageViewController.h */,
 				18D439CB1DF05840009007F0 /* MainPageViewController.m */,
 				187D35EA1E10A50A00A58C58 /* PlanViewController.h */,
 				187D35EB1E10A50A00A58C58 /* PlanViewController.m */,
+				1831018E1E26024A00FCBD8E /* ContactsViewController.h */,
+				1831018F1E26024A00FCBD8E /* ContactsViewController.m */,
+				183101941E260DD800FCBD8E /* PhotoViewController.h */,
+				183101951E260DD800FCBD8E /* PhotoViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -464,11 +476,13 @@
 			files = (
 				18305A561E1F95A300D48F0D /* YHViewsMaker.m in Sources */,
 				18B1B8351DDD4A7B003227FA /* BlockPass.m in Sources */,
-				18D439B41DEFF201009007F0 /* ViewController11.m in Sources */,
 				181CEECB1DEBD2C700D48226 /* AddressModel.m in Sources */,
 				18B1B80D1DD988D1003227FA /* AppDelegate.m in Sources */,
 				18305A551E1F95A300D48F0D /* UIView+YHFrame.m in Sources */,
+				183101931E260D6900FCBD8E /* ViewController11.m in Sources */,
 				18D4399E1DEFCD8E009007F0 /* TableViewCell3.m in Sources */,
+				183101961E260DD800FCBD8E /* PhotoViewController.m in Sources */,
+				183101901E26024A00FCBD8E /* ContactsViewController.m in Sources */,
 				18D439B31DEFF201009007F0 /* ViewController.m in Sources */,
 				18D439C71DF02F7A009007F0 /* YBAlertView.m in Sources */,
 				18D439B21DEFF201009007F0 /* cccTableViewController.m in Sources */,
@@ -512,6 +526,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				18B1B8121DD988D1003227FA /* Base */,
+				1831018C1E25CEA200FCBD8E /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -520,6 +535,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				18B1B8171DD988D1003227FA /* Base */,
+				1831018D1E25CEA200FCBD8E /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -531,6 +547,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -578,6 +595,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

@@ -67,6 +67,7 @@
     };
 //    self.automaticallyAdjustsScrollViewInsets = NO;
 }
+
 - (BOOL)strIsEmpty:(NSString *)str promptName:(NSString *)name {
     if (str.length == 0) {
         NSString *prompt = [NSString stringWithFormat:@"%@栏还没有填写完成!", name];

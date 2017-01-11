@@ -11,6 +11,9 @@
 #import "ViewController11.h"
 #import "ViewController12.h"
 #import "MainPageViewController.h"
+#import "ContactsViewController.h"
+#import <Contacts/Contacts.h>
+#import "PhotoViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +25,32 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    MainPageViewController *vc = [[MainPageViewController alloc] init];
+
+    
+    // get contact authority
+    CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+    
+    if (status == CNAuthorizationStatusNotDetermined) {
+        // create address list object
+        CNContactStore *contactStore = [[CNContactStore alloc] init];
+        
+        // request for authorization
+        [contactStore requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"%@", error);
+            }
+            
+            if (granted) {
+                NSLog(@"Get authorization success.");
+            } else {
+                NSLog(@"Get authorization failure.");
+            }
+        }];
+    }
+    
+//    MainPageViewController *vc = [[MainPageViewController alloc] init];
+//    ContactsViewController *vc = [ContactsViewController new];
+    PhotoViewController *vc = [PhotoViewController new];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = nav;

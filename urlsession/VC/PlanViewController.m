@@ -17,6 +17,11 @@
 @property (nonatomic, strong)UIImageView *backImageView;
 @property (nonatomic, strong)UIScrollView *planScrollView;
 
+@property (nonatomic, strong)NSMutableArray *arr1;
+@property (nonatomic, strong)NSMutableArray *arr2;
+@property (nonatomic, strong)NSMutableArray *arr3;
+@property (nonatomic, strong)NSArray *dataArr;
+
 @end
 
 @implementation PlanViewController
@@ -51,31 +56,63 @@
     
     [self.planScrollView addSubview:self.backImageView];
     
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kDEVICEWIDTH, KSELFVIEWHEIGHT) style:UITableViewStyleGrouped];
+    self.title = @"table";
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, kDEVICEWIDTH, KSELFVIEWHEIGHT-44) style:UITableViewStyleGrouped];
     [self.view addSubview:tableview];
     tableview.delegate = self;
     tableview.dataSource = self;
+    
+    self.arr1 = [NSMutableArray arrayWithArray:@[@1,@23,@4]];
+    self.arr2 = [NSMutableArray arrayWithArray:@[@1,@23,@4,@1,@23,@6]];
+    self.arr3 = [NSMutableArray arrayWithArray:@[@513,@12,@121]];
+    self.dataArr = @[self.arr1,self.arr2,self.arr3];
+    tableview.allowsMultipleSelectionDuringEditing = YES;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return self.dataArr.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 3;
-    } else if (section == 1) {
-        return 5;
-    } else {
-        return 8;
-    }
+    return ((NSArray *)self.dataArr[section]).count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuse"];
-    cell.textLabel.text = [NSString stringWithFormat:@"Section%li --- Row%li", (long)indexPath.section, (long)indexPath.row];
+    
+    NSArray *rowArr = self.dataArr[indexPath.section];
+    cell.textLabel.text = [((NSNumber *)rowArr[indexPath.row]) stringValue];
     return cell;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [NSString stringWithFormat:@"#%li", section+1];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return UITableViewCellEditingStyleInsert | UITableViewCellEditingStyleDelete;
+    return UITableViewCellEditingStyleDelete;
+//    return UITableViewCellEditingStyleInsert;
+}
+//- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return YES;
+//}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSMutableArray *rowArr = (NSMutableArray *)self.dataArr[indexPath.section];
+        [rowArr removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView reloadData];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        NSMutableArray *rowArr = (NSMutableArray *)self.dataArr[indexPath.section];
+        [rowArr insertObject:@"new" atIndex:indexPath.row];
+        [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView reloadData];
+    } else {
+        return;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
